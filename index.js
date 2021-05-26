@@ -3,7 +3,7 @@ const config = require('./config/config')
 
 const app = express()                       //initialising express
 
-const register = require('./controller/register');
+const register = require('./controller/route.js');
 app.use('/', register);
 
 app.listen(config.port,()=>{
