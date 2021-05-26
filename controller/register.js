@@ -1,14 +1,12 @@
-const express = require('express')
-const router = express.Router();
-const path = require('path');
 const db = require('../config/db')
 const bcrypt = require('bcrypt')
 const User = require('../model/UserSchema')
+const router = require('./route');
 
-router.use(express.urlencoded({extended: true}))
-router.use(express.json()) // using the body-parser module
+// router.use(express.urlencoded({extended: true}))
+// router.use(express.json())
 
-router.post('/register', async (req,res)=>{
+const registerHandler = async (req,res)=>{
     await User.findOne({email: req.body.email},(err,user)=>{
         if(user){
             res.send("User already registered!")
@@ -29,7 +27,6 @@ router.post('/register', async (req,res)=>{
             res.send("user registered successfully")
         }
 })
-})
+};
 
-
-module.exports = router;
+module.exports = registerHandler
