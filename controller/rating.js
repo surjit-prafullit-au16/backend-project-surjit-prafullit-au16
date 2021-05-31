@@ -14,7 +14,7 @@ const ratingHandler = async (req,res)=>{
                 throw err
             }
         })
-        Movie.findOne({name: req.body.movie_name},{_id:0,__v:0},(err,movieUpdated)=>{
+        Movie.findOne({name: req.body.movie_name},{__v:0},(err,movieUpdated)=>{
             if(err){
                 throw err
             }

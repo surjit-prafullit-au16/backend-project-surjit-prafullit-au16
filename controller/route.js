@@ -8,6 +8,7 @@ const registerHandler = require('./register');
 const loginHandler = require('./login');
 const movieHandler = require('./movie')
 const ratingHandler = require('./rating');
+const commentHandler = require('./comment');
 
 router.use(cookieParser())
 router.use(express.urlencoded({extended: true}))
@@ -17,6 +18,7 @@ router.post('/register', registerHandler)
 router.post('/login', loginHandler)
 router.post('/movie',auth, movieHandler)
 router.post('/rating',auth, ratingHandler)
+router.post('/comment',auth, commentHandler)
 
 
 
