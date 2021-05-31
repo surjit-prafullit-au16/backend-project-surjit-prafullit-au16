@@ -6,11 +6,11 @@ const commentSchema = new mongoose.Schema({
         trim : true
     },
     user_id : {
-        type : Schema.Types.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,
         ref : 'users'
     },
     movie_id: {
-        type : Schema.Types.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,
         ref : 'movie'
     } 
 
