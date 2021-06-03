@@ -1,5 +1,3 @@
-const db = require('../config/db')
-const User = require('../model/UserSchema')
 const Movie = require('../model/MovieSchema')   
 
 const ratingHandler = async (req,res)=>{
@@ -14,7 +12,7 @@ const ratingHandler = async (req,res)=>{
                 throw err
             }
         })
-        Movie.findOne({name: req.body.movie_name},{__v:0},(err,movieUpdated)=>{
+        Movie.findOne({name: req.body.movie_name},{__v:0,comments:0},(err,movieUpdated)=>{
             if(err){
                 throw err
             }
