@@ -47,9 +47,9 @@ function newUserRegisteration(req) {
         }, (error, user) => {
             if (error) {
                 console.log("error in adding user")
-                return False;
+                return false;
             }
-            return True;
+            return true;
         })
     })
     
