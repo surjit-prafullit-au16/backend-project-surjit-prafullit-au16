@@ -8,10 +8,20 @@ module.exports = {
             if (user) {
                 return res.send("User already registered. Please Login with email & password")
             }
-            if(newUserRegisteration(req)){
-                return res.send("user registered successfully")
-            }
-            res.send("error in adding user")
+            bcrypt.hash(req.body.password, 10, function (err, hash) {
+                User.create({
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: hash,
+                    is_admin: req.body.is_admin
+                }, (error, user) => {
+                    if (error) {
+                        return res.send("error in adding user")
+                    }
+                    res.send("user registered successfully")
+                    
+                })
+            })
         })
     },
 
@@ -47,9 +57,10 @@ function newUserRegisteration(req) {
         }, (error, user) => {
             if (error) {
                 console.log("error in adding user")
-                return False;
+                return false;
             }
-            return True;
+            console.log("Hello")
+            return true;
         })
     })
     
