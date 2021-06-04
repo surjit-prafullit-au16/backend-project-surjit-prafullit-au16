@@ -47,5 +47,3 @@ module.exports = {
         res.send('Logged out, Hope to see you again!')
     }
 }
-
-
