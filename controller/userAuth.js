@@ -48,21 +48,4 @@ module.exports = {
     }
 }
 
-// async function newUserRegisteration(req) {
-//     let result = false
-//     hash = bcrypt.hash(req.body.password, 10,) 
-//     await User.create({
-//         name: req.body.name,
-//         email: req.body.email,
-//         password: hash,
-//         is_admin: req.body.is_admin
-//     },async (error, user) => {
-//         if (error) {
-//             console.log("error in adding user")
-//             return false;
-//         }
-//         console.log("added successfully")
-//         return true;
-//     })
-// }
 
