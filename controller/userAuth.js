@@ -8,10 +8,21 @@ module.exports = {
             if (user) {
                 return res.send("User already registered. Please Login with email & password")
             }
-            if(newUserRegisteration(req)){
-                return res.send("user registered successfully")
-            }
-            res.send("error in adding user")
+            hash = bcrypt.hash(req.body.password, 10,(error, hash)=>{ 
+                User.create({
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: hash,
+                    is_admin: req.body.is_admin
+                },(error, user) => {
+                    if (error) {
+                        console.log("error in adding user")
+                        return res.send("Error in adding user")
+                    }
+                    console.log("User registered successfully")
+                    return res.send("User registered successfully");
+                })
+            })
         })
     },
 
@@ -37,20 +48,21 @@ module.exports = {
     }
 }
 
-function newUserRegisteration(req) {
-    bcrypt.hash(req.body.password, 10, function (err, hash) {
-        User.create({
-            name: req.body.name,
-            email: req.body.email,
-            password: hash,
-            is_admin: req.body.is_admin
-        }, (error, user) => {
-            if (error) {
-                console.log("error in adding user")
-                return False;
-            }
-            return True;
-        })
-    })
-    
-}
+// async function newUserRegisteration(req) {
+//     let result = false
+//     hash = bcrypt.hash(req.body.password, 10,) 
+//     await User.create({
+//         name: req.body.name,
+//         email: req.body.email,
+//         password: hash,
+//         is_admin: req.body.is_admin
+//     },async (error, user) => {
+//         if (error) {
+//             console.log("error in adding user")
+//             return false;
+//         }
+//         console.log("added successfully")
+//         return true;
+//     })
+// }
+
