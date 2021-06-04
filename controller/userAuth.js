@@ -46,22 +46,4 @@ module.exports = {
         res.send('Logged out, Hope to see you again!')
     }
 }
-
-function newUserRegisteration(req) {
-    bcrypt.hash(req.body.password, 10, function (err, hash) {
-        User.create({
-            name: req.body.name,
-            email: req.body.email,
-            password: hash,
-            is_admin: req.body.is_admin
-        }, (error, user) => {
-            if (error) {
-                console.log("error in adding user")
-                return false;
-            }
-            console.log("Hello")
-            return true;
-        })
-    })
     
-}
